@@ -15,7 +15,7 @@ const draw = svgRef => {
     .geoMercator()
     .center([132, -28])
     .translate([w / 2, h / 2])
-    .scale(1000);
+    .scale(600);
 
   var path = d3.geoPath().projection(projection);
   console.log(path);
@@ -25,14 +25,16 @@ const draw = svgRef => {
     .attr("width", w)
     .attr("height", h);
 
-  svg
+  const graph = svg.select("#australia");
+
+  graph
     .selectAll("path")
     .data(geojson.features)
     .enter()
     .append("path")
     .attr("d", path)
     .attr("stroke", "dimgray")
-    .attr("fill", "black");
+    .attr("fill", "blue");
 };
 
 export default draw;

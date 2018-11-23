@@ -8,7 +8,9 @@ class Australia extends Component {
   render() {
     return (
       <div className="col s12 l6">
-        <svg ref={svgRef => (this.svgRef = svgRef)} />
+        <svg ref={svgRef => (this.svgRef = svgRef)}>
+          <g id="australia" />
+        </svg>
       </div>
     );
   }
