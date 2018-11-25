@@ -18,20 +18,47 @@ const mouseOut = (d, i, n) => {
     .attr("fill", "blue");
 };
 
+const getPercentage = state => {
+  switch (state) {
+    case "Victoria":
+      return "63.3%";
+    case "Western Australia":
+      return "60.3%";
+    case "New South Wales":
+      return "63.2%";
+    case "Northern Territory":
+      return "64.3%";
+    case "Tasmania":
+      return "67.5%";
+    case "Australian Capital Territory":
+      return "63.5%";
+    case "South Australia":
+      return "65.8%";
+    case "Queensland":
+      return "63.6%";
+    default:
+      return "??";
+  }
+};
+
 const tip = d3tip()
   .attr("class", "tip card")
   .html(d => {
     //console.log(d.data.cost);
     let content = `<div class="name">${d.properties.STATE_NAME}</div>`;
-    console.log(d.properties);
+    content += `<div class="cost">${getPercentage(
+      d.properties.STATE_NAME
+    )}</div>`;
+    //console.log(d.properties);
+    //console.log(data);
     return content;
   });
 
-const draw = svgRef => {
-  //console.log("drawing australia");
-  //console.log(geoData);
+const draw = (svgRef, data) => {
+  //console.log(data);
+
   var geojson = topojson.feature(geoData, geoData.objects.aus_state);
-  //console.log("geojson", geojson);
+
   var w = 518;
   var h = 400;
 
@@ -43,7 +70,7 @@ const draw = svgRef => {
     .scale(600);
 
   var path = d3.geoPath().projection(projection);
-  console.log(path);
+  //console.log(path);
 
   const svg = d3
     .select(svgRef)

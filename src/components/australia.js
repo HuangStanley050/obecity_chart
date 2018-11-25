@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import drawAustralia from "../helper/drawAustralia";
+import { connect } from "react-redux";
 
 class Australia extends Component {
   componentDidMount() {
-    drawAustralia(this.svgRef);
+    drawAustralia(this.svgRef, this.props.data);
   }
+  /*componentDidUpdate() {
+    drawAustralia(this.svgRef, this.props.data);
+  }*/
   render() {
     return (
       <div className="col s12 l6">
@@ -16,4 +20,10 @@ class Australia extends Component {
   }
 }
 
-export default Australia;
+const mapStateToProsp = state => {
+  return {
+    data: state.data.AusStates
+  };
+};
+
+export default connect(mapStateToProsp)(Australia);
