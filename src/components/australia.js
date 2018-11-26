@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import drawAustralia from "../helper/drawAustralia";
-import { connect } from "react-redux";
+//import { connect } from "react-redux";
 
 class Australia extends Component {
   componentDidMount() {
@@ -20,10 +20,11 @@ class Australia extends Component {
   }
 }
 
-const mapStateToProsp = state => {
+/*const mapStateToProsp = state => {
   return {
     data: state.data.AusStates
   };
 };
+*/
 
-export default connect(mapStateToProsp)(Australia);
+export default Australia;

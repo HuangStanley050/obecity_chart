@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { select } from "../store/actions/category";
 
 class GenderChart extends Component {
   state = {
@@ -7,10 +9,14 @@ class GenderChart extends Component {
   handleSelect = e => {
     // e.preventDefault();
     //console.log(e.target.name);
+    this.props.select(e.target.name);
     this.setState({
       selectOption: e.target.name
     });
   };
+  componentDidUpdate() {
+    console.log(this.props.data);
+  }
   render() {
     return (
       <div className="col s12 l6">
@@ -54,4 +60,19 @@ class GenderChart extends Component {
   }
 }
 
-export default GenderChart;
+const mapStateToProps = state => {
+  return {
+    data: state.data.percentage
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    select: category => dispatch(select(category))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GenderChart);
