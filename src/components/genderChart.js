@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { select } from "../store/actions/category";
+import barChart from "../helper/drawBarChart";
 
 class GenderChart extends Component {
   state = {
@@ -14,8 +15,13 @@ class GenderChart extends Component {
       selectOption: e.target.name
     });
   };
+  componentDidMount() {
+    console.log("mounted");
+    barChart(this.svgRef, this.props.data);
+  }
   componentDidUpdate() {
-    console.log(this.props.data);
+    console.log("updated");
+    barChart(this.svgRef, this.props.data);
   }
   render() {
     return (
@@ -55,6 +61,12 @@ class GenderChart extends Component {
             </label>
           </p>
         </form>
+        <svg ref={el => (this.svgRef = el)}>
+          <g id="chart">
+            <g />
+            <g />
+          </g>
+        </svg>
       </div>
     );
   }
