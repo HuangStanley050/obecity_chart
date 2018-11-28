@@ -1,13 +1,13 @@
 const initialState = {
   percentage: [
-    { "18-24": 22 },
-    { "25-34": 33.4 },
-    { "35-44": 37.4 },
-    { "45-54": 37.6 },
-    { "55-64": 38.8 },
-    { "65-74": 38.9 },
-    { "75-84": 43.4 },
-    { "85+": 38.8 }
+    { age: "18-24", percent: 22 },
+    { age: "25-34", percent: 33.4 },
+    { age: "35-44", percent: 37.4 },
+    { age: "45-54", percent: 37.6 },
+    { age: "55-64", percent: 38.8 },
+    { age: "65-74", percent: 38.9 },
+    { age: "75-84", percent: 43.4 },
+    { age: "85+", percent: 38.8 }
   ]
 };
 
@@ -15,14 +15,14 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "male":
       const maleData = [
-        { "18-24": 26.9 },
-        { "25-34": 41.9 },
-        { "35-44": 47.5 },
-        { "45-54": 46.7 },
-        { "55-64": 44.5 },
-        { "65-74": 42.2 },
-        { "75-84": 44 },
-        { "85+": 47.3 }
+        { age: "18-24", percent: 26.9 },
+        { age: "25-34", percent: 41.9 },
+        { age: "35-44", percent: 47.5 },
+        { age: "45-54", percent: 46.7 },
+        { age: "55-64", percent: 44.5 },
+        { age: "65-74", percent: 42.2 },
+        { age: "75-84", percent: 44 },
+        { age: "85+", percent: 47.3 }
       ];
 
       return {
@@ -30,28 +30,28 @@ const reducer = (state = initialState, action) => {
       };
     case "female":
       const femaleData = [
-        { "18-24": 17 },
-        { "25-34": 25.1 },
-        { "35-44": 27.6 },
-        { "45-54": 28.6 },
-        { "55-64": 33.3 },
-        { "65-74": 36.1 },
-        { "75-84": 41.4 },
-        { "85+": 35 }
+        { age: "18-24", percent: 17 },
+        { age: "25-34", percent: 25.1 },
+        { age: "35-44", percent: 27.6 },
+        { age: "45-54", percent: 28.6 },
+        { age: "55-64", percent: 33.3 },
+        { age: "65-74", percent: 36.1 },
+        { age: "75-84", percent: 41.4 },
+        { age: "85+", percent: 35 }
       ];
       return {
         percentage: [...femaleData]
       };
     case "total":
       const totalData = [
-        { "18-24": 22 },
-        { "25-34": 33.4 },
-        { "35-44": 37.4 },
-        { "45-54": 37.6 },
-        { "55-64": 38.8 },
-        { "65-74": 38.9 },
-        { "75-84": 43.4 },
-        { "85+": 38.8 }
+        { age: "18-24", percent: 22 },
+        { age: "25-34", percent: 33.4 },
+        { age: "35-44", percent: 37.4 },
+        { age: "45-54", percent: 37.6 },
+        { age: "55-64", percent: 38.8 },
+        { age: "65-74", percent: 38.9 },
+        { age: "75-84", percent: 43.4 },
+        { age: "85+", percent: 38.8 }
       ];
       return {
         percentage: [...totalData]

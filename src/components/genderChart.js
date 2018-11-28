@@ -16,7 +16,7 @@ class GenderChart extends Component {
     });
   };
   componentDidMount() {
-    console.log("mounted");
+    //console.log("mounted");
     barChart(this.svgRef, this.props.data);
   }
   componentDidUpdate() {
@@ -63,8 +63,8 @@ class GenderChart extends Component {
         </form>
         <svg ref={el => (this.svgRef = el)}>
           <g id="chart">
-            <g />
-            <g />
+            <g id="xAxis" />
+            <g id="yAxis" />
           </g>
         </svg>
       </div>
