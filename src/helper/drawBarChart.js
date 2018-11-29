@@ -39,6 +39,9 @@ const barChart = (svgRef, data) => {
     .ticks(5)
     .tickFormat(d => d + "%");
 
+  const rects = graph.selectAll("rect").data(data);
+  //console.log(rects);
+
   y.domain([0, d3.max(data, d => d.percent)]);
   x.domain(data.map(ageGroup => ageGroup.age));
 
@@ -49,6 +52,27 @@ const barChart = (svgRef, data) => {
     .selectAll("text")
     .attr("transform", "rotate(-40)")
     .attr("text-anchor", "end");
+
+  rects
+    .attr("width", x.bandwidth)
+    .attr("fill", "orange")
+    .attr("x", d => x(d.age))
+    .attr("height", d => height - margin.top - margin.bottom - y(d.percent))
+    .attr("y", d => y(d.percent));
+
+  console.log(rects);
+
+  rects
+    .enter()
+    .append("rect")
+    .attr("width", x.bandwidth)
+    .attr("height", 0)
+    .attr("fill", "orange")
+    .attr("x", d => x(d.percent))
+    .attr("y", d => height - margin.top - margin.bottom)
+
+    .attr("height", d => height - margin.top - margin.bottom - y(d.percent))
+    .attr("y", d => y(d.percent));
 };
 
 export default barChart;
