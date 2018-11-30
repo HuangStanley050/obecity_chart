@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 //import "./App.css";
 import Header from "./components/header";
 import ChartContainer from "./components/chartContainer";
+import Reference from "./components/reference";
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <div>
         <Header />
         <ChartContainer />
+        <Reference />
       </div>
     );
   }
