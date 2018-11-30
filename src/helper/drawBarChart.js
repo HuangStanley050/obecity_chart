@@ -56,23 +56,27 @@ const barChart = (svgRef, data) => {
 
   rects
     .attr("width", x.bandwidth)
-    .attr("fill", "orange")
+    .attr("fill", "steelblue")
+    .transition()
+    .duration(1000)
     .attr("x", d => x(d.age))
     .attr("height", d => height - margin.top - margin.bottom - y(d.percent))
     .attr("y", d => y(d.percent));
 
-  console.log(rects);
+  //console.log(rects);
 
   rects
     .enter()
     .append("rect")
     .attr("width", x.bandwidth)
-    //.attr("height", 0)
-    .attr("fill", "orange")
+    .attr("height", 0)
+    .attr("fill", "steelblue")
     .attr("x", d => x(d.age))
     .attr("y", d => y(d.percent))
-    .attr("height", d => height - margin.top - margin.bottom - y(d.percent));
-  //.attr("y", d => y(d.percent));
+    .transition()
+    .duration(1000)
+    .attr("height", d => height - margin.top - margin.bottom - y(d.percent))
+    .attr("y", d => y(d.percent));
 };
 
 export default barChart;
