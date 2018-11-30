@@ -16,12 +16,10 @@ class GenderChart extends Component {
     });
   };
   componentDidMount() {
-    //console.log("mounted");
-    barChart(this.svgRef, this.props.data);
+    barChart(this.svgRef, this.props.data, this.state.selectOption);
   }
   componentDidUpdate() {
-    console.log("updated");
-    barChart(this.svgRef, this.props.data);
+    barChart(this.svgRef, this.props.data, this.state.selectOption);
   }
   render() {
     return (

@@ -1,6 +1,20 @@
 import * as d3 from "d3";
 
-const barChart = (svgRef, data) => {
+const colorBar = color => {
+  //console.log(color);
+  switch (color) {
+    case "total":
+      return "steelblue";
+    case "male":
+      return "cadetblue";
+    case "female":
+      return "MediumOrchid";
+    default:
+      return "steelblue";
+  }
+};
+
+const barChart = (svgRef, data, color) => {
   //console.log(data);
   const margin = { top: 10, right: 10, bottom: 40, left: 40 };
   const width = 480;
@@ -52,31 +66,42 @@ const barChart = (svgRef, data) => {
     .attr("transform", "rotate(-40)")
     .attr("text-anchor", "end");
 
+  graph.selectAll(".label").remove();
+
   const rects = graph.selectAll("rect").data(data);
+  const labels = graph.selectAll(".text").data(data);
 
   rects
     .attr("width", x.bandwidth)
-    .attr("fill", "steelblue")
+    .attr("fill", colorBar(color))
     .transition()
     .duration(1000)
     .attr("x", d => x(d.age))
     .attr("height", d => height - margin.top - margin.bottom - y(d.percent))
     .attr("y", d => y(d.percent));
-
-  //console.log(rects);
 
   rects
     .enter()
     .append("rect")
     .attr("width", x.bandwidth)
     .attr("height", 0)
-    .attr("fill", "steelblue")
+    .attr("fill", colorBar(color))
     .attr("x", d => x(d.age))
     .attr("y", d => y(d.percent))
     .transition()
     .duration(1000)
     .attr("height", d => height - margin.top - margin.bottom - y(d.percent))
     .attr("y", d => y(d.percent));
+
+  labels
+    .enter()
+    .append("text")
+    .attr("class", "label")
+    .attr("x", d => x(d.age))
+    .attr("y", d => y(d.percent))
+    .attr("dy", "1em")
+    .attr("fill", "white")
+    .text(d => d.percent);
 };
 
 export default barChart;
