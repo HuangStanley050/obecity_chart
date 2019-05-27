@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Live Site
-[Obesity Chart](https://sleepy-hamilton-98d0ff.netlify.com/)
+[Obesity Chart](https://obesity-chart.netlify.com)
 
 ## Available Scripts
 
